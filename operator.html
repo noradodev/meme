@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        #app {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 3rem;
+        }
+
+        p {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1 id="timess">Time</h1>
+        <div>
+            <p>Click the button 10 times</p>
+            <br>
+            <p>Clicks: <span id="timeclick">0</span></p>
+            <button class="btn" onClick="">Click Me!</button>
+        </div>
+
+    </div>
+    <script>
+
+        const app = document.getElementById('app');
+        const timess = document.getElementById('timess');
+        const btn = document.querySelector('.btn');
+        const timeclick = document.getElementById('timeclick');
+
+        function UpdateTime() {
+            const date = new Date();
+            const hour = date.getHours();
+            const minute = date.getMinutes();
+            const second = date.getSeconds();
+            const displayMinute = minute < 10 ? '0' + minute : minute;
+            const displaySecond = second < 10 ? '0' + second : second;
+
+            hour >= 12 ? timess.innerText = hour + ':' + displayMinute + ':' + displaySecond + ' PM' :
+                timess.innerText = hour + ':' + displayMinute + ':' + displaySecond;
+
+        }
+        UpdateTime();
+        setInterval(UpdateTime, 1000);
+
+        let cout = 0;
+
+        btn.addEventListener('click', () => {
+            clickBtn();
+        })
+        function clickBtn() {
+
+            cout += 1;
+            if (cout == 10) {
+                btn.setAttribute('onclick', "location.href='https://youtu.be/dQw4w9WgXcQ?t=3'")
+
+                return;
+            }
+            timeclick.innerText = cout;
+
+        }
+
+
+
+    </script>
+</body>
+
+</html>
